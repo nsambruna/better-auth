@@ -14,9 +14,9 @@ export async function GET(req: Request) {
     // ottieni l'access token per auth0
     const {accessToken}  = await auth.api.getAccessToken({
         body: {
-            providerId: "auth0",
+            providerId: "entra",
         },
-        headers: req.headers,
+        headers: await headers(),
     });
     return NextResponse.json({ accessToken });
 }

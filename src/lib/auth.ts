@@ -13,8 +13,7 @@ const auth0 ={
     authorizationUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/authorize`,
     tokenUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`,
     userInfoUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`,
-    scopes: ["openid", "profile", "email", "offline_access"],
-    redirectURI: "http://localhost:3000/api/auth/oauth2/callback/auth0",
+    scopes: ["openid", "profile", "email", "offline_access"]
 };
 
 const entra = {
@@ -25,7 +24,7 @@ const entra = {
     tokenUrl: `${process.env.ENTRA_AUTH_AUTHORITY}/oauth2/v2.0/token`,
     userInfoUrl: process.env.ENTRA_GRAPH_ME_ENDPOINT!,
     scopes: process.env.ENTRA_AUTH_SCOPE!.split(" "),
-    redirectURI: "http://localhost:3000/api/auth/oauth2/callback/entra",
+    redirectURI:"http://localhost:3000/api/auth/callback"
 }
 
 export const auth = betterAuth({
@@ -41,7 +40,7 @@ export const auth = betterAuth({
         bearer(),
         genericOAuth({
             config: [
-                auth0
+                entra
             ],
         }),
 

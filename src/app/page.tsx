@@ -54,9 +54,9 @@ export  function LoginButton() {
     }
 
     return (
-        <button onClick={() => authClient.signIn.oauth2({ providerId: "auth0"
+        <button onClick={() => authClient.signIn.oauth2({ providerId: "entra"
         })}>
-            Login con auth0
+            Login con entra
         </button>
     );
 }
