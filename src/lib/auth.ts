@@ -1,7 +1,6 @@
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
-import {bearer, genericOAuth, jwt} from "better-auth/plugins";
-import {createAuthMiddleware} from "better-auth/api";
+import {bearer, genericOAuth} from "better-auth/plugins";
 import { createPool } from "mysql2/promise";
 
 
@@ -40,17 +39,17 @@ export const auth = betterAuth({
         bearer(),
         genericOAuth({
             config: [
-                entra
+                process.env.NEXT_PUBLIC_PROVIDER === 'entra' ?  entra : auth0
             ],
         }),
 
     ],
-    hooks: {
+/*    hooks: {
         after: createAuthMiddleware(async (ctx) => {
             console.log('after')
 
         }),
-    },
+    },*/
 
 });
 

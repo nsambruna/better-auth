@@ -1,5 +1,3 @@
-// app/api/auth/callback/route.ts
-import { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 
 export async function GET(req: Request) {
@@ -8,7 +6,7 @@ export async function GET(req: Request) {
     const state = url.searchParams.get("state") ?? undefined;
 
     return auth.api.oAuth2Callback({
-       params: {providerId: "entra"}, // deve essere uguale al providerId nel genericOAuth
+       params: {providerId: "entra"},
         query: { code, state },
         headers: req.headers,
         asResponse: true,

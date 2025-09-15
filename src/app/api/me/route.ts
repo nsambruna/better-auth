@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import {headers} from "next/headers";
 
-export async function GET(req: Request) {
+export async function GET() {
     // recupera la sessione utente
     const session = await auth.api.getSession({
         headers: await headers() // you need to pass the headers object.
