@@ -14,7 +14,7 @@ export async function GET() {
     // ottieni l'access token per auth0
     const {accessToken}  = await auth.api.getAccessToken({
         body: {
-            providerId: "entra",
+            providerId: process.env.NEXT_PUBLIC_PROVIDER!,
         },
         headers: await headers(),
     });

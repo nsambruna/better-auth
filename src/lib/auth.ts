@@ -9,7 +9,7 @@ const auth0 ={
     providerId: "auth0",
     clientId: process.env.AUTH0_CLIENT_ID!,
     clientSecret: process.env.AUTH0_CLIENT_SECRET!,
-    authorizationUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/authorize`,
+    authorizationUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/authorize?audience=${process.env.AUTH0_AUDIENCE}`,
     tokenUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`,
     userInfoUrl: `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`,
     scopes: ["openid", "profile", "email", "offline_access"]
