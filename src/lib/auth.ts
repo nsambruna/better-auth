@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import {bearer, genericOAuth} from "better-auth/plugins";
-import { createPool } from "mysql2/promise";
+import { Pool } from "pg";
 
 
 
@@ -27,13 +27,9 @@ const entra = {
 }
 
 export const auth = betterAuth({
-    database: createPool({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database: "better-auth",
-        port: 8889,
-    }),
+        database: new Pool({
+            connectionString: `${process.env.POSTGRES_CONNECTION}`,
+        }),
     plugins: [
         nextCookies(),
         bearer(),
